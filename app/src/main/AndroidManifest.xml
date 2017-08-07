@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ktuceng.projee">
+    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="26" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".GeoMain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:label="@string/action_bar_demo_name"
+            android:name=".ActionBarDemoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/OverlayActionBarTheme"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+
+        <activity
+            android:name=".MarkerCloseInfoWindowOnRetapDemoActivity"
+            android:label="@string/marker_close_info_window_on_retap_demo_label">
+        </activity>
+
+        <service
+            android:name="ktuceng.projee.SensorService"
+            android:enabled="true" >
+        </service>
+
+        <receiver
+            android:name=".GeofenceReciever"
+            android:enabled="true"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="com.aol.android.geofence.ACTION_RECEIVE_GEOFENCE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="ktuceng.projee.SensorRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+            <intent-filter>
+                <action android:name="uk.ac.shef.oak.ActivityRecognition.RestartSensor"/>
+            </intent-filter>
+        </receiver>
+
+
+
+
+
+    </application>
+
+</manifest>
